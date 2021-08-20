@@ -1,12 +1,12 @@
-// to interact with the front end its importing dependencies 
+// to interact with the front end its importing dependencies
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
 
-// made a server
+// server made
 const app = express();
 
-// a port listener is set
+// port listener set
 const PORT = process.env.PORT || 3000;
 
 //  The Array for createNoteData 
