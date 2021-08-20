@@ -1,18 +1,18 @@
-// importing dependencies to interact with the front end
+// to interact with the front end its importing dependencies 
 const express = require("express");
 const path = require("path");
 const fs = require("fs");
 
-// creating a server
+// made a server
 const app = express();
 
-// Setting a port listener
+// a port listener is set
 const PORT = process.env.PORT || 3000;
 
-//  createNoteData Array
+//  The Array for createNoteData 
 let createNoteData = [];
 
-// Setting up middleware body parsing, static, and route
+// Setting up static, route and middleware body parsing, 
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -21,7 +21,7 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, "public")));
 
-// api call response for the notes, an having results sent to browser in the form of an array of object
+// having results sent to browser in the form of an array of object api call response for the notes
 app.get("/api/notes", function (err, res) {
   try {
     createNoteData = fs.readFileSync("db/db.json", "utf8");
@@ -34,7 +34,7 @@ app.get("/api/notes", function (err, res) {
   res.json(createNoteData);
 });
 
-// this section writes the new note to the json file and sending back to the browser
+// this writes the new note to the json file and sending back to the browser
 app.post("/api/notes", function (req, res) {
   try {
     createNoteData = fs.readFileSync("./db/db.json", "utf8");
@@ -54,7 +54,7 @@ app.post("/api/notes", function (req, res) {
   }
 });
 
-// Deleting a note and reading the json file | writing the new notes to the file and sending back to the browser
+// Deleting a note and reading the json file  
 
 app.delete("/api/notes/:id", function (req, res) {
   try {
@@ -65,6 +65,8 @@ app.delete("/api/notes/:id", function (req, res) {
     });
     createNoteData = JSON.stringify(createNoteData);
 
+    // writing the new notes to the file and sending back to the browser
+    
     fs.writeFile("./db/db.json", createNoteData, "utf8", function (err) {
       if (err) throw err;
     });
