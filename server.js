@@ -84,7 +84,7 @@ app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
-// If no matching route is found, then default to home
+// default to home if no matching route is found
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
